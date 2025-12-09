@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.pizuk.tquality.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "tquality.refmap.json",
+  "mixins": [
+    "MaterialStatsModuleMixin",
+    "PartBuilderBlockEntityMixin",
+    "TinkerStationBlockEntityMixin",
+    "ToolPartItemMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
