@@ -1,21 +1,19 @@
 package org.pizuk.tquality;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.pizuk.tquality.config.Config;
 import org.slf4j.Logger;
+
+import java.util.Random;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Tquality.MODID)
@@ -26,13 +24,19 @@ public class Tquality {
 
     public static final String QUALITY = "quality";
 
-    public static final String TQUALITY_DATA = "tquality_data";
+    public static final String DEFAULT_QUALITY = "is_default";
 
-    public static final String TQUALITY_STATS_TYPE = "stats_type";
+    public static final String PART_DATA = "tquality_data";
 
-    public static final String TQUALITY_STATS = "stats";
+    public static final String STATS_TYPE = "stats_type";
 
-    public static final String TQUALITY_TOOL_PART_DATA = "part_data";
+    public static final String STATS = "stats";
+
+    public static final String TOOL_DATA = "parts_data";
+
+    public static final String ON_TABLE = "on_table";
+
+    public static final Random RANDOM = new Random();
 
 
     public static ResourceLocation modResource(String path) {

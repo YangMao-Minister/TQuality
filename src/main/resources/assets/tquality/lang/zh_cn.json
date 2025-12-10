@@ -1,3 +1,10 @@
 {
-  "tquality.tooltip.quality" : "品质"
+  "tquality.tooltip.quality": "品质",
+  "tquality.tooltip.uncrafted_stats": "在制作它之前，你不知道它的属性如何。",
+  "tquality.quality_query_success": "这个物品的材料品质是",
+  "tquality.quality_query_failure": "这个物品没有材料品质",
+  "tquality.quality_set_success": "材料品质设置成功",
+  "tquality.quality_set_failure": "无效物品",
+  "tquality.tooltip.default_quality": "平平无奇的默认品质。尝试获取不同品质的材料！",
+  "tquality.quality_upgrade_success": "升级成功"
 }

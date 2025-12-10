@@ -16,15 +16,15 @@ import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.tables.block.entity.inventory.PartBuilderContainerWrapper;
 
 @Mod.EventBusSubscriber(modid = Tquality.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class TQEventListeners {
+public class ModEventListeners {
 
     @SubscribeEvent
     public static void onCraft(PlayerEvent.ItemCraftedEvent event) {
         if (event.getEntity().level().isClientSide() || !(event.getInventory() instanceof PartBuilderContainerWrapper container)) {
             return;
         }
-//        ItemStack result = event.getCrafting();
-//        result = StatsUtils.getModifiedPartItem(result, container.getStack(), true).copy();
+        ItemStack result = event.getCrafting();
+        result.getTag().remove(Tquality.ON_TABLE);
     }
 
     @SubscribeEvent
@@ -35,7 +35,6 @@ public class TQEventListeners {
             return;
         }
         float quality = stack.getTag().getFloat(Tquality.QUALITY);
-        event.getToolTip().add(Component.translatable("tquality.tooltip.quality").append(": ").withStyle(ChatFormatting.DARK_GRAY).append(
-                Component.literal(String.valueOf(quality)).withStyle(Style.EMPTY.withColor(ModUtils.getQualityColor(quality)))));
+        StatsUtils.addQualityTooltip(event.getToolTip(), quality);
     }
 }

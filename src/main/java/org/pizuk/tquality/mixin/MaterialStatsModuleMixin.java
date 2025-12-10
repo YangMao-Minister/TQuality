@@ -2,7 +2,6 @@ package org.pizuk.tquality.mixin;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import org.pizuk.tquality.Tquality;
 import org.pizuk.tquality.utils.StatsUtils;
 import org.spongepowered.asm.mixin.Final;
@@ -47,9 +46,9 @@ public abstract class MaterialStatsModuleMixin {
                 // apply the stats if they exist for the material
                 Optional<IMaterialStats> stats = registry.getMaterialStats(materials.get(i).getId(), statType);
                 ToolDataNBT toolData = (ToolDataNBT) context.getPersistentData();
-                ListTag toolPartData = (ListTag) toolData.get(Tquality.modResource(Tquality.TQUALITY_TOOL_PART_DATA));
-                if (toolPartData != null) {
-                    stats = Optional.ofNullable(StatsUtils.getStatsFromNbt((CompoundTag) toolPartData.get(i)));
+                ListTag toolPartData = (ListTag) toolData.get(Tquality.modResource(Tquality.TOOL_DATA));
+                if (toolPartData != null && toolPartData.get(i) instanceof CompoundTag tag && tag.contains(Tquality.STATS)) {
+                    stats = Optional.ofNullable(StatsUtils.getStatsFromNbt(tag));
                 }
                 if (stats.isPresent()) {
                     stats.get().apply(builder, scales[i]);

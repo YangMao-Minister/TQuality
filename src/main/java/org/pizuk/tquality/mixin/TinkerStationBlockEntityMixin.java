@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import slimeknights.tconstruct.library.recipe.tinkerstation.ITinkerStationRecipe;
 import slimeknights.tconstruct.library.recipe.tinkerstation.building.ToolBuildingRecipe;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.tables.block.entity.inventory.LazyResultContainer;
 import slimeknights.tconstruct.tables.block.entity.inventory.TinkerStationContainerWrapper;
 import slimeknights.tconstruct.tables.block.entity.table.RetexturedTableBlockEntity;
@@ -51,6 +52,8 @@ public abstract class TinkerStationBlockEntityMixin extends RetexturedTableBlock
                 break;
             inputs.add(input);
         }
-        cir.setReturnValue(StatsUtils.getModifiedToolItem(stack, inputs, false));
+        ItemStack itemStack = StatsUtils.injectStatsNbtToTool(stack, inputs);
+        ToolStack.from(itemStack).rebuildStats();
+        cir.setReturnValue(itemStack);
     }
 }

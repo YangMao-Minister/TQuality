@@ -1,3 +1,10 @@
 {
-  "tquality.tooltip.quality": "Quality"
+  "tquality.tooltip.quality": "Quality",
+  "tquality.tooltip.uncrafted_stats": "The stats keep unknown util crafted.",
+  "tquality.quality_query_success": "Quality of the selected material:",
+  "tquality.quality_query_failure": "The selected material has no quality tag.",
+  "tquality.quality_set_success": "Quality set successfully :",
+  "tquality.quality_set_failure": "Invalid item.",
+  "tquality.tooltip.default_quality": "d",
+  "tquality.quality_upgrade_success": "d"
 }

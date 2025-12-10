@@ -5,12 +5,16 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "tquality.refmap.json",
   "mixins": [
+    "CastingBlockEntityMixin",
     "MaterialStatsModuleMixin",
+    "MultiModuleContainerMenuMixin",
     "PartBuilderBlockEntityMixin",
     "TinkerStationBlockEntityMixin",
     "ToolPartItemMixin"
   ],
   "client": [
+    "TinkerStationScreenMixin",
+    "ToolTipUtilMixin"
   ],
   "injectors": {
     "defaultRequire": 1
